@@ -1,0 +1,7 @@
+openai.api_key = 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
+model = gpt-4o
+website_url = https://zonvakantiekeuze.nl
+post_status = publish
+wordpress_username = Peter
+wordpress_app_pass = Kj7m tzWy QJaS NIeX VNk8 W6Uu
+youtube_api = AIzaSyCHMf1NA-3l9_A8YChrSyapZvDRXa2d9SM
