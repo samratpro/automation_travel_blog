@@ -5,3 +5,4 @@ post_status = publish
 wordpress_username = Peter
 wordpress_app_pass = Kj7m tzWy QJaS NIeX VNk8 W6Uu
 youtube_api = AIzaSyCHMf1NA-3l9_A8YChrSyapZvDRXa2d9SM
+banner = yes
