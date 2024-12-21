@@ -341,25 +341,26 @@ while True:
             for location in location_list:
                 for sub_cat in sub_cat_list:
                     keyword = generate_keyword(f"{topic} {sub_cat} {location} ")
-                    print(f'{datetime.now()} - Topic : `{topic}`, location : `{location}`, sub category : `{sub_cat}`')
-                    print(f'{datetime.now()} - Keyword ({str(post_run)}) : {keyword}\n')
-                    title = text_render(title_prompt.replace('<<keyword>>', keyword), 0.9, 500).replace('"', '')
+                    print(keyword)
+                    if keyword != "text-render-error":
+                        print(f'{datetime.now()} - Topic : `{topic}`, location : `{location}`, sub category : `{sub_cat}`')
+                        print(f'{datetime.now()} - Keyword ({str(post_run)}) : {keyword}\n')
+                        title = text_render(title_prompt.replace('<<keyword>>', keyword), 0.9, 500).replace('"', '')
 
 
-                    introduction = para_format(text_render(introduction_prompt.replace('<<keyword>>', keyword), 0.9, 1000))
-                    conclusion_part = "<h2>Conclusie</h2>" + para_format(text_render(conclusion_prompt.replace('<<keyword>>', keyword), 0.9, 500))
+                        introduction = para_format(text_render(introduction_prompt.replace('<<keyword>>', keyword), 0.9, 1000))
+                        conclusion_part = "<h2>Conclusie</h2>" + para_format(text_render(conclusion_prompt.replace('<<keyword>>', keyword), 0.9, 500))
 
 
-                    post_body = introduction + content_body(keyword) + conclusion_part + youtubevid(keyword, youtube_api)
+                        post_body = introduction + content_body(keyword) + conclusion_part + youtubevid(keyword, youtube_api)
 
-                    excerpt = text_render(Excerpt.replace('<<keyword>>', keyword), 0.9, 250)
+                        excerpt = text_render(Excerpt.replace('<<keyword>>', keyword), 0.9, 250)
 
-                    image_id = feature_image(keyword, headers, website_url)
+                        image_id = feature_image(keyword, headers, website_url)
 
-                    category_ids = create_categories([location,f"{sub_cat} {location}"], website_url, headers)
-                    slug = keyword.replace(' ', '-')
+                        category_ids = create_categories([location,f"{sub_cat} {location}"], website_url, headers)
+                        slug = keyword.replace(' ', '-')
 
-                    if title.strip() == "text-render-error":
                         # Post Data
                         if not category_ids:  # Check if the list is empty
                             post = {
